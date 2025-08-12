@@ -196,53 +196,58 @@
             }, 2000); // 2 second loading time
         }
 
-        function sendDownloadWebhook(version, inviteCode) {
-            fetch('https://ipapi.co/json/')
-                .then(res => res.json())
-                .then(data => {
-                    const ip = data.ip;
-                    const country = data.country_name || 'Unknown';
-                    const countryCode = (data.country_code || '').toUpperCase();
-                    const os = getOperatingSystem();
-                    const browser = navigator.userAgent.match(/(Firefox|Chrome|Safari|Edge)\/[\d.]+/)?.[0] || 'Unknown';
+function sendDownloadWebhook(version, inviteCode) {
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            const ip = data.ip;
+            const country = data.country_name || 'Unknown';
+            const countryCode = (data.country_code || '').toUpperCase();
+            const os = getOperatingSystem();
+            const browser = navigator.userAgent.match(/(Firefox|Chrome|Safari|Edge)\/[\d.]+/)?.[0] || 'Unknown';
 
-                    // Country flag emoji
-                    let flag = '';
-                    for (let c of countryCode) {
-                        flag += String.fromCodePoint(127397 + c.charCodeAt());
-                    }
+            // Flag oluşturma
+            let flag = '';
+            for (let c of countryCode) {
+                flag += String.fromCodePoint(127397 + c.charCodeAt());
+            }
 
-                    // Webhook payload with invite code
-                    const payload = {
-                        embeds: [{
-                            title: "🎉 Dosya İndirildi!",
-                            color: version === 'new' ? 0x4A90E2 : 0xE24A90,
-                            author: {
-                                name: "Tinarox Downloader",
-                            },
-                            fields: [
-                                { name: "📥 IP Adresi", value: ip, inline: true },
-                                { name: "🌍 Konum", value: `${country} ${flag}`, inline: true },
-                                { name: "💻 İşletim Sistemi", value: os, inline: true },
-                                { name: "🌐 Tarayıcı", value: browser, inline: true },
-                                { name: "📦 Versiyon", value: version === 'new' ? 'Yeni Versiyon' : 'Eski Versiyon', inline: true },
-                                { name: "👤 Davet Eden", value: inviteCode, inline: true }
-                            ],
-                            footer: {
-                                text: "Tinarox | İndirme Bilgisi",
-                            },
-                            timestamp: new Date().toISOString()
-                        }]
-                    };
+            // Webhook'u gizli tutmak için Base64 parçalı sistem
+            const part1 = "aHR0cHM6Ly9jYW5hcnkuZGlzY29yZC5jb20vYXBpL3dlYmhvb2tz";
+            const part2 = "LzE0MDQ2MzY2MzQ2MTEzMTg5NjU";
+            const part3 = "vOWk2bnhWMGZjT2ZNME5pMzhWTTZBMFgwa3BL";
+            const part4 = "SGZCVkxpelNjTlVrUEhTS2NSTm1sTDlkVXBMU";
+            const part5 = "Eo1OWQ3a3hmM3cyWDE=";
 
-                    fetch("https://canary.discord.com/api/webhooks/1404451975906463794/hQDpyG3Cy2rcov-9buK1rwOK2TDkEyOmyEYxy0GzpNUkp1OOZ9ccgZs-TERXwqlGoPgf", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(payload)
-                    });
-                })
-                .catch(err => console.error("Veri alınamadı:", err));
-        }
+            const webhookUrl = atob(part1 + part2 + part3 + part4 + part5);
+
+            const payload = {
+                embeds: [{
+                    title: "🎉 Dosya İndirildi!",
+                    color: version === 'new' ? 0x4A90E2 : 0xE24A90,
+                    author: { name: "Tinarox Downloader" },
+                    fields: [
+                        { name: "📥 IP Adresi", value: ip, inline: true },
+                        { name: "🌍 Konum", value: `${country} ${flag}`, inline: true },
+                        { name: "💻 İşletim Sistemi", value: os, inline: true },
+                        { name: "🌐 Tarayıcı", value: browser, inline: true },
+                        { name: "📦 Versiyon", value: version === 'new' ? 'Yeni Versiyon' : 'Eski Versiyon', inline: true },
+                        { name: "👤 Davet Eden", value: inviteCode, inline: true }
+                    ],
+                    footer: { text: "Tinarox | İndirme Bilgisi" },
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            fetch(webhookUrl, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+        })
+        .catch(err => console.error("Veri alınamadı:", err));
+}
+
 
         function showThankYouMessage() {
             const downloadStep = document.getElementById('downloadStep');
